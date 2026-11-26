@@ -1,0 +1,815 @@
+:root {
+  --bg: #e9ece5;
+  --paper: #f9f7f0;
+  --card: #fffdf7;
+  --green: #1c4434;
+  --green-soft: #e3eadf;
+  --accent: #f2cf80;
+  --text: #1d2c23;
+  --muted: #5e6b62;
+  --line: #dcdcd2;
+  --error: #8f3b2f;
+  --radius: 16px;
+  --serif: Georgia, 'Noto Serif', 'Times New Roman', serif;
+  --sans: 'Noto Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.45;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Каркас ---------- */
+
+.shell {
+  max-width: 1240px;
+  margin: 32px auto;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 44px;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.logo__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--accent);
+}
+
+.logo__text {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav__link {
+  padding: 9px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav__link:hover {
+  background: #eef1ea;
+}
+
+.nav__link.is-active {
+  background: var(--green-soft);
+}
+
+.page {
+  min-height: 560px;
+  padding: 32px 44px 48px;
+}
+
+.page-title {
+  font-family: var(--serif);
+  font-size: 48px;
+  line-height: 1.15;
+}
+
+.page-subtitle {
+  margin: 6px 0 24px;
+  color: var(--muted);
+}
+
+.section-title {
+  margin: 32px 0 16px;
+  font-family: var(--serif);
+  font-size: 32px;
+}
+
+/* ---------- Кнопки ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--green);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(1.15);
+}
+
+.button--accent {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.button--light {
+  background: var(--green-soft);
+  color: var(--text);
+}
+
+.button:focus-visible,
+.nav__link:focus-visible,
+.counter__button:focus-visible,
+.link-button:focus-visible,
+.field__input:focus-visible {
+  outline: 3px solid #7aa38c;
+  outline-offset: 2px;
+}
+
+.link-button {
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  color: var(--error);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* ---------- О нас ---------- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 40px;
+  border-radius: var(--radius);
+  background: var(--green);
+  color: #fff;
+}
+
+.hero__content {
+  max-width: 520px;
+}
+
+.hero__title {
+  font-family: var(--serif);
+  font-size: 64px;
+  line-height: 1.1;
+}
+
+.hero__text {
+  margin: 16px 0 28px;
+  font-size: 19px;
+  opacity: 0.92;
+}
+
+.hero__books {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 0 12px;
+}
+
+.hero__books::before {
+  content: '';
+  position: absolute;
+  inset: 0 40px -20px;
+  border-radius: 50%;
+  background: #2b5a46;
+}
+
+.hero__book {
+  position: relative;
+  width: 100px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.18);
+}
+
+.hero__book--2 {
+  width: 120px;
+  margin-bottom: 26px;
+}
+
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.team-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.team-card__role {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.team-card__name {
+  margin: 8px 0 10px;
+  font-size: 22px;
+}
+
+.team-card__text {
+  color: var(--muted);
+}
+
+/* ---------- Каталог ---------- */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.field__input {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+}
+
+#search {
+  width: min(360px, 100%);
+}
+
+.toolbar .field:first-child {
+  flex: 0 1 360px;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.book-card__cover {
+  display: grid;
+  place-items: center;
+  height: 188px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+}
+
+.book-card__title {
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.book-card__author {
+  margin-top: auto;
+  padding-top: 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.book-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.book-card__price {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.book-card__in-cart {
+  min-height: 22px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- Обложки ---------- */
+
+.cover {
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.cover--large {
+  width: 112px;
+  height: 150px;
+}
+
+.cover--small {
+  flex-shrink: 0;
+  width: 60px;
+  height: 80px;
+}
+
+.cover--placeholder {
+  display: grid;
+  place-items: center;
+  border: 2px dashed #b9c2b8;
+  background: #f1f3ee;
+  box-shadow: none;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ---------- Корзина ---------- */
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 356px;
+  align-items: start;
+  gap: 28px;
+}
+
+.cart-table {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.cart-table__head,
+.cart-row {
+  display: grid;
+  grid-template-columns: 1fr 130px 150px;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+}
+
+.cart-table__head {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cart-table__head span:nth-child(2) {
+  text-align: center;
+}
+
+.cart-table__head span:last-child {
+  padding-right: 66px;
+  text-align: right;
+}
+
+.cart-row {
+  border-top: 1px solid var(--line);
+}
+
+.cart-row__book {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cart-row__title {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.cart-row__author {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.cart-row__sum {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 66px;
+}
+
+.cart-row__price {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.counter {
+  display: inline-flex;
+  align-items: center;
+  justify-self: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f6f4ec;
+}
+
+.counter__button {
+  width: 40px;
+  height: 42px;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.counter__button:disabled {
+  color: #a7aca6;
+  cursor: not-allowed;
+}
+
+.counter__value {
+  min-width: 46px;
+  padding: 0 6px;
+  border-inline: 1px solid var(--line);
+  font-weight: 700;
+  line-height: 42px;
+  text-align: center;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border-radius: var(--radius);
+  background: var(--green);
+  color: #fff;
+}
+
+.summary__label {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.summary__total {
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.summary__loading,
+.summary__error {
+  margin: 18px 0 10px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.summary__error {
+  color: #ffb4a6;
+}
+
+.summary .button--light {
+  align-self: flex-start;
+}
+
+.summary__copies {
+  margin: 8px 0 32px;
+  opacity: 0.85;
+}
+
+/* ---------- Состояния ---------- */
+
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 420px;
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.status__title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.status__title--error {
+  color: var(--error);
+}
+
+.status__total {
+  color: var(--green);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.skeletons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+.skeleton__box {
+  height: 70px;
+  border-radius: 10px;
+  background: var(--green-soft);
+}
+
+.skeleton__line {
+  width: 70%;
+  height: 8px;
+  margin-top: 10px;
+  border-radius: 4px;
+  background: var(--green-soft);
+}
+
+/* ---------- Планшет ---------- */
+
+@media (max-width: 1000px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Телефон (390 px) ---------- */
+
+@media (max-width: 640px) {
+  .shell {
+    min-height: 100vh;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 12px 10px;
+  }
+
+  .logo__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo__text {
+    font-size: 19px;
+  }
+
+  .nav {
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .nav__link {
+    flex: 1;
+    padding: 9px 6px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .page {
+    padding: 18px 12px 32px;
+  }
+
+  .page-title {
+    font-size: 30px;
+  }
+
+  .page-subtitle {
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 24px 20px;
+  }
+
+  .hero__title {
+    font-size: 38px;
+  }
+
+  .hero__text {
+    font-size: 15px;
+  }
+
+  .hero__books {
+    display: none;
+  }
+
+  .team__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  #search,
+  .toolbar .field {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .toolbar .field__input {
+    width: 100%;
+  }
+
+  .toolbar {
+    margin-top: 12px;
+  }
+
+  .catalog-grid {
+    gap: 8px;
+  }
+
+  .book-card {
+    padding: 6px 6px 8px;
+  }
+
+  .book-card__cover {
+    height: 90px;
+    margin-bottom: 10px;
+  }
+
+  .book-card__cover .cover--large {
+    width: 56px;
+    height: 75px;
+  }
+
+  .book-card__title {
+    font-size: 13px;
+  }
+
+  .book-card__author {
+    padding-top: 8px;
+    font-size: 11px;
+  }
+
+  .book-card__bottom {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .book-card__price {
+    font-size: 14px;
+  }
+
+  .book-card__bottom .button {
+    padding: 9px 8px;
+    font-size: 12px;
+  }
+
+  .book-card__in-cart {
+    min-height: 0;
+    font-size: 11px;
+  }
+
+  .cart-table {
+    border: 0;
+    background: none;
+  }
+
+  .cart-table__head {
+    display: none;
+  }
+
+  .cart-row {
+    grid-template-columns: auto 1fr;
+    gap: 10px 14px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+  }
+
+  .cart-row__book {
+    grid-column: 1 / -1;
+    gap: 12px;
+  }
+
+  .cart-row__book .cover--small {
+    width: 36px;
+    height: 48px;
+  }
+
+  .cart-row__title {
+    font-size: 15px;
+  }
+
+  .cart-row__author {
+    font-size: 12px;
+  }
+
+  .counter__button {
+    width: 32px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .counter__value {
+    min-width: 32px;
+    line-height: 34px;
+  }
+
+  .cart-row__sum {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 0;
+  }
+
+  .cart-row__price {
+    font-size: 15px;
+  }
+
+  .summary {
+    padding: 16px;
+  }
+
+  .summary__label {
+    font-size: 16px;
+  }
+
+  .summary__total {
+    font-size: 30px;
+  }
+
+  .summary__copies {
+    margin: 0 0 14px;
+    font-size: 14px;
+  }
+}
