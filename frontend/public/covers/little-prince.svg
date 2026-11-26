@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160">
+  <rect width="120" height="160" rx="4" fill="#3c4a78"/>
+  <rect x="5" y="4" width="4" height="152" rx="2" fill="#7b86b5"/>
+  <path d="M18 16 H108 M18 148 H108" stroke="#7b86b5" stroke-width="1"/>
+  <text x="62" y="38" fill="#f2cf80" font-family="Georgia, serif" font-size="11" font-weight="700" text-anchor="middle">THE LITTLE</text>
+  <text x="62" y="54" fill="#f2cf80" font-family="Georgia, serif" font-size="13" font-weight="700" text-anchor="middle">PRINCE</text>
+  <circle cx="60" cy="98" r="22" fill="none" stroke="#7b86b5" stroke-width="2"/><circle cx="60" cy="98" r="11" fill="#f2cf80"/><circle cx="88" cy="74" r="4" fill="#f2cf80"/><circle cx="30" cy="80" r="2.5" fill="#f2cf80"/><circle cx="84" cy="122" r="2.5" fill="#f2cf80"/>
+</svg>

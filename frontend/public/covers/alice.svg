@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160">
+  <rect width="120" height="160" rx="4" fill="#7a3c58"/>
+  <rect x="5" y="4" width="4" height="152" rx="2" fill="#c98ea8"/>
+  <path d="M18 16 H108 M18 148 H108" stroke="#c98ea8" stroke-width="1"/>
+  <text x="62" y="38" fill="#f2cf80" font-family="Georgia, serif" font-size="11" font-weight="700" text-anchor="middle">ALICE IN</text>
+  <text x="62" y="54" fill="#f2cf80" font-family="Georgia, serif" font-size="11" font-weight="700" text-anchor="middle">WONDERLAND</text>
+  <circle cx="60" cy="86" r="10" fill="none" stroke="#f2cf80" stroke-width="3"/><path d="M60 96 V126 M60 112 H68 M60 120 H66" stroke="#f2cf80" stroke-width="3" fill="none"/><path d="M28 102 l6 -6 l6 6 l-6 6 z M80 96 l6 -6 l6 6 l-6 6 z" fill="#c98ea8"/>
+</svg>

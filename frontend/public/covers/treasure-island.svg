@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160">
+  <rect width="120" height="160" rx="4" fill="#a86a3f"/>
+  <rect x="5" y="4" width="4" height="152" rx="2" fill="#e6b98d"/>
+  <path d="M18 16 H108 M18 148 H108" stroke="#e6b98d" stroke-width="1"/>
+  <text x="62" y="38" fill="#f2cf80" font-family="Georgia, serif" font-size="11" font-weight="700" text-anchor="middle">TREASURE</text>
+  <text x="62" y="54" fill="#f2cf80" font-family="Georgia, serif" font-size="13" font-weight="700" text-anchor="middle">ISLAND</text>
+  <circle cx="60" cy="100" r="24" fill="none" stroke="#f6e3c3" stroke-width="2"/><path d="M60 72 L66 100 L60 128 L54 100 Z" fill="#f6e3c3"/><path d="M34 100 L60 94 L86 100 L60 106 Z" fill="#e6b98d"/>
+</svg>
