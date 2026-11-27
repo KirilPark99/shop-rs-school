@@ -14,20 +14,20 @@ import type { CartItem } from './types';
 
 describe('addToCart', () => {
   it('adds a new book with quantity 1', () => {
-    expect(addToCart([], 'hobbit')).toEqual([{ bookId: 'hobbit', quantity: 1 }]);
+    expect(addToCart([], 'book-1')).toEqual([{ bookId: 'book-1', quantity: 1 }]);
   });
 
   it('does not change the original cart', () => {
-    const cart: CartItem[] = [{ bookId: 'hobbit', quantity: 1 }];
-    addToCart(cart, 'hobbit');
-    expect(cart).toEqual([{ bookId: 'hobbit', quantity: 1 }]);
+    const cart: CartItem[] = [{ bookId: 'book-1', quantity: 1 }];
+    addToCart(cart, 'book-1');
+    expect(cart).toEqual([{ bookId: 'book-1', quantity: 1 }]);
   });
 });
 
 describe('decreaseQuantity', () => {
   it('decreases quantity by one', () => {
-    const cart: CartItem[] = [{ bookId: 'hobbit', quantity: 2 }];
-    expect(decreaseQuantity(cart, 'hobbit')).toEqual([{ bookId: 'hobbit', quantity: 1 }]);
+    const cart: CartItem[] = [{ bookId: 'book-1', quantity: 2 }];
+    expect(decreaseQuantity(cart, 'book-1')).toEqual([{ bookId: 'book-1', quantity: 1 }]);
   });
 
   // Тест «не меньше 1» и «повторное добавление» пишутся вживую на интервью.
@@ -36,21 +36,21 @@ describe('decreaseQuantity', () => {
 describe('removeFromCart', () => {
   it('removes only the selected book', () => {
     const cart: CartItem[] = [
-      { bookId: 'hobbit', quantity: 2 },
-      { bookId: 'little-prince', quantity: 1 },
+      { bookId: 'book-1', quantity: 2 },
+      { bookId: 'book-2', quantity: 1 },
     ];
-    expect(removeFromCart(cart, 'hobbit')).toEqual([{ bookId: 'little-prince', quantity: 1 }]);
+    expect(removeFromCart(cart, 'book-1')).toEqual([{ bookId: 'book-2', quantity: 1 }]);
   });
 
   it('returns an empty cart after removing the last book', () => {
-    expect(removeFromCart([{ bookId: 'hobbit', quantity: 1 }], 'hobbit')).toEqual([]);
+    expect(removeFromCart([{ bookId: 'book-1', quantity: 1 }], 'book-1')).toEqual([]);
   });
 });
 
 describe('counters', () => {
   const cart: CartItem[] = [
-    { bookId: 'hobbit', quantity: 2 },
-    { bookId: 'little-prince', quantity: 1 },
+    { bookId: 'book-1', quantity: 2 },
+    { bookId: 'book-2', quantity: 1 },
   ];
 
   it('counts all copies', () => {
@@ -59,8 +59,8 @@ describe('counters', () => {
   });
 
   it('returns quantity of one book or 0', () => {
-    expect(getQuantity(cart, 'hobbit')).toBe(2);
-    expect(getQuantity(cart, 'alice')).toBe(0);
+    expect(getQuantity(cart, 'book-1')).toBe(2);
+    expect(getQuantity(cart, 'book-3')).toBe(0);
   });
 
   it('calculates a line total', () => {
@@ -71,17 +71,32 @@ describe('counters', () => {
 describe('keepKnownBooks', () => {
   it('drops books that are not in the catalog', () => {
     const cart: CartItem[] = [
-      { bookId: 'hobbit', quantity: 1 },
+      { bookId: 'book-1', quantity: 1 },
       { bookId: 'deleted-book', quantity: 3 },
     ];
-    expect(keepKnownBooks(cart, mockBooks)).toEqual([{ bookId: 'hobbit', quantity: 1 }]);
+    expect(keepKnownBooks(cart, mockBooks)).toEqual([{ bookId: 'book-1', quantity: 1 }]);
   });
 });
 
 describe('parseCart', () => {
   it('restores a saved cart', () => {
-    const raw = JSON.stringify([{ bookId: 'hobbit', quantity: 2 }]);
-    expect(parseCart(raw)).toEqual([{ bookId: 'hobbit', quantity: 2 }]);
+    const raw = JSON.stringify([{ bookId: 'book-1', quantity: 2 }]);
+    expect(parseCart(raw)).toEqual([{ bookId: 'book-1', quantity: 2 }]);
+  });
+
+  it('keeps books from carts saved before the API was added', () => {
+    const raw = JSON.stringify([
+      { bookId: 'hobbit', quantity: 2 },
+      { bookId: 'little-prince', quantity: 1 },
+      { bookId: 'alice', quantity: 1 },
+      { bookId: 'treasure-island', quantity: 1 },
+    ]);
+    expect(parseCart(raw)).toEqual([
+      { bookId: 'book-1', quantity: 2 },
+      { bookId: 'book-2', quantity: 1 },
+      { bookId: 'book-3', quantity: 1 },
+      { bookId: 'book-4', quantity: 1 },
+    ]);
   });
 
   it('returns an empty cart for missing or broken data', () => {
@@ -92,10 +107,10 @@ describe('parseCart', () => {
 
   it('skips invalid items', () => {
     const raw = JSON.stringify([
-      { bookId: 'hobbit', quantity: 0 },
-      { bookId: 'alice', quantity: 1.5 },
-      { bookId: 'little-prince', quantity: 1 },
+      { bookId: 'book-1', quantity: 0 },
+      { bookId: 'book-3', quantity: 1.5 },
+      { bookId: 'book-2', quantity: 1 },
     ]);
-    expect(parseCart(raw)).toEqual([{ bookId: 'little-prince', quantity: 1 }]);
+    expect(parseCart(raw)).toEqual([{ bookId: 'book-2', quantity: 1 }]);
   });
 });

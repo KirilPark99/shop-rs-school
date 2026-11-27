@@ -15,9 +15,9 @@ const team = [
 ];
 
 const heroBooks = [
-  { id: 'hobbit', title: 'The Hobbit' },
-  { id: 'alice', title: 'Alice’s Adventures in Wonderland' },
-  { id: 'little-prince', title: 'The Little Prince' },
+  { id: 'book-1', title: 'The Hobbit' },
+  { id: 'book-3', title: 'Alice’s Adventures in Wonderland' },
+  { id: 'book-2', title: 'The Little Prince' },
 ];
 
 export function renderAbout(): string {
