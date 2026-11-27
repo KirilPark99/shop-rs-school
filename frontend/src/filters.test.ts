@@ -7,19 +7,19 @@ const ids = (books: { id: string }[]) => books.map((book) => book.id);
 describe('filterBooks', () => {
   it('returns all books for an empty query', () => {
     expect(ids(filterBooks(mockBooks, '   ', 'default'))).toEqual([
-      'hobbit',
-      'little-prince',
-      'alice',
-      'treasure-island',
+      'book-1',
+      'book-2',
+      'book-3',
+      'book-4',
     ]);
   });
 
   it('searches by title ignoring case', () => {
-    expect(ids(filterBooks(mockBooks, 'HOBBIT', 'default'))).toEqual(['hobbit']);
+    expect(ids(filterBooks(mockBooks, 'HOBBIT', 'default'))).toEqual(['book-1']);
   });
 
   it('searches by author', () => {
-    expect(ids(filterBooks(mockBooks, 'carroll', 'default'))).toEqual(['alice']);
+    expect(ids(filterBooks(mockBooks, 'carroll', 'default'))).toEqual(['book-3']);
   });
 
   it('returns an empty list when nothing matches', () => {
@@ -28,20 +28,20 @@ describe('filterBooks', () => {
 
   it('sorts by price ascending and descending', () => {
     expect(ids(filterBooks(mockBooks, '', 'price-asc'))).toEqual([
-      'little-prince',
-      'treasure-island',
-      'alice',
-      'hobbit',
+      'book-2',
+      'book-4',
+      'book-3',
+      'book-1',
     ]);
-    expect(ids(filterBooks(mockBooks, '', 'price-desc'))[0]).toBe('hobbit');
+    expect(ids(filterBooks(mockBooks, '', 'price-desc'))[0]).toBe('book-1');
   });
 
   it('sorts by title', () => {
     expect(ids(filterBooks(mockBooks, '', 'title'))).toEqual([
-      'alice',
-      'hobbit',
-      'little-prince',
-      'treasure-island',
+      'book-3',
+      'book-1',
+      'book-2',
+      'book-4',
     ]);
   });
 

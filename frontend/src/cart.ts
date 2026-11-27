@@ -2,6 +2,13 @@ import type { Book, CartItem } from './types';
 
 export const CART_STORAGE_KEY = 'bookshelf-cart';
 
+const legacyBookIds = new Map([
+  ['hobbit', 'book-1'],
+  ['little-prince', 'book-2'],
+  ['alice', 'book-3'],
+  ['treasure-island', 'book-4'],
+]);
+
 // Повторное добавление той же книги увеличивает количество, а не создаёт новую строку.
 export function addToCart(cart: CartItem[], bookId: string): CartItem[] {
   const exists = cart.some((item) => item.bookId === bookId);
@@ -61,7 +68,10 @@ export function parseCart(raw: string | null): CartItem[] {
     if (!Array.isArray(data)) return [];
     return data
       .filter(isCartItem)
-      .map((item) => ({ bookId: item.bookId, quantity: item.quantity }));
+      .map((item) => ({
+        bookId: legacyBookIds.get(item.bookId) ?? item.bookId,
+        quantity: item.quantity,
+      }));
   } catch {
     return [];
   }
